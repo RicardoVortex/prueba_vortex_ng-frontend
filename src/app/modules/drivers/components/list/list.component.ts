@@ -26,7 +26,7 @@ export class ListComponent implements OnInit {
         Swal.fire({
           icon: 'error',
           title: 'Error',
-          text: 'Se presneto un error en el servidor',
+          text: 'Se presento un error en el servidor',
           confirmButtonText:'Aceptar',
         });
       }
