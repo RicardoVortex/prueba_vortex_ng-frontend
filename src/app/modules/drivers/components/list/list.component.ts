@@ -18,7 +18,7 @@ export class ListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    /* this.driversServ.getAllDrivers().subscribe(
+     this.driversServ.getAllDrivers().subscribe(
       (response) => {
         this.List = response;
       },
@@ -30,34 +30,34 @@ export class ListComponent implements OnInit {
           confirmButtonText:'Aceptar',
         });
       }
-    );*/
-    const data = [
-      {
-        id: 1,
-        nombre: 'Johan ',
-        apellido: 'Romero',
-        direccion: 'cr 18 r',
-        telefono: '3124469702',
-        identificacion: '1.000.153.783',
-      },
-      {
-        id: 2,
-        nombre: 'Romero ',
-        apellido: 'Medina',
-        direccion: 'cr 18 r',
-        telefono: '3124469702',
-        identificacion: '1.000.153.783',
-      },
-      {
-        id: 3,
-        nombre: 'Juan ',
-        apellido: 'Torres',
-        direccion: 'cr 18 r',
-        telefono: '3124469702',
-        identificacion: '1.000.153.783',
-      },
-    ];
-    this.List = data;
+    );
+    // const data = [
+    //   {
+    //     id: 1,
+    //     nombre: 'Johan ',
+    //     apellido: 'Romero',
+    //     direccion: 'cr 18 r',
+    //     telefono: '3124469702',
+    //     identificacion: '1.000.153.783',
+    //   },
+    //   {
+    //     id: 2,
+    //     nombre: 'Romero ',
+    //     apellido: 'Medina',
+    //     direccion: 'cr 18 r',
+    //     telefono: '3124469702',
+    //     identificacion: '1.000.153.783',
+    //   },
+    //   {
+    //     id: 3,
+    //     nombre: 'Juan ',
+    //     apellido: 'Torres',
+    //     direccion: 'cr 18 r',
+    //     telefono: '3124469702',
+    //     identificacion: '1.000.153.783',
+    //   },
+    // ];
+    // this.List = data;
   }
 
   GetId(id: number) {
