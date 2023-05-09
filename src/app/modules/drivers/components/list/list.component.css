@@ -1,6 +1,8 @@
 .ui-wrapper {
     padding: 0 1rem;
     margin-top: 5rem;
+    margin-bottom: 5rem;
+
 }
 
 .ui-filter {
@@ -76,7 +78,7 @@
 } */
 
 .ui-image {
-    border-radius: var(--border-radius);
+    border-radius: 14px 14px 0px 0px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -122,7 +124,9 @@
   width: 20rem;
 }
 .borderI{
-  width: 5rem; height: 5rem;border-color: black; border-width: 2px; border-style: solid; border-radius: 50%;
+  width: 5rem;
+   height: 5rem;
+     border-radius: 50%;
   background-color: white;
 }
 .imgg{
@@ -132,8 +136,16 @@
   text-align: center;
   color:#43c3c7;
   font-family: Arial, Helvetica, sans-serif;
-  padding: 2rem;
+  padding: 2rem 0px 0px 0px;
   font-weight: bold;
+
+}
+.center_T2{
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 1rem 0px 1rem 0px;
 
 }
 .pi{
@@ -147,4 +159,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.butoonp{
+  display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    margin-left: -6rem;
+}
+.fons{
+  font-size: 1.5rem
 }

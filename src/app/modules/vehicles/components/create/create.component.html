@@ -1,14 +1,16 @@
 <div class="modal-dialog">
   <div class="modal-content">
     <form [formGroup]="checkoutForm" name="crearEventoForm()" (ngSubmit)="createEvento(checkoutForm.value)">
-    <div class="modal-header">
+    <div class="modal-header colr_mod">
       <h1 class="modal-title fs-5" id="staticBackdropLabel">Crear Vehículos</h1>
       <button
         type="button"
-        class="btn-close"
+        class="styl_bclo"
         data-bs-dismiss="modal"
         aria-label="Close"
-      ></button>
+      >
+      <i class="bi bi-x-lg close_color"></i>
+    </button>
     </div>
     <div class="modal-body">
         <div class="input-group mb-3">
@@ -52,10 +54,13 @@
         </div>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+      <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">
+        <i class="bi bi-door-closed hov"></i>
         Cerrar
       </button>
-      <button type="button" class="btn btn-success" type="submit">Crear</button>
+      <button type="button" class="btn btn-outline-success" type="submit">
+        <i class="bi bi-save hov"></i>
+        Crear</button>
     </div>
   </form>
   </div>

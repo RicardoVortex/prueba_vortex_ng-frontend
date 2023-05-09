@@ -34,27 +34,27 @@ export class ListComponent implements OnInit {
     const data = [
       {
         id: 1,
-        nombre: 'Johan ANDRES',
-        apellido: 'Apche',
-        direccion: '80 kl',
+        nombre: 'Johan ',
+        apellido: 'Romero',
+        direccion: 'cr 18 r',
         telefono: '3124469702',
-        identificacion: 'dsa',
+        identificacion: '1.000.153.783',
       },
       {
         id: 2,
-        nombre: 'Romero Medina',
-        apellido: 'Apche',
-        direccion: '80 kl',
+        nombre: 'Romero ',
+        apellido: 'Medina',
+        direccion: 'cr 18 r',
         telefono: '3124469702',
-        identificacion: 'dsa',
+        identificacion: '1.000.153.783',
       },
       {
         id: 3,
-        nombre: 'Juan Torres',
-        apellido: 'Apche',
+        nombre: 'Juan ',
+        apellido: 'Torres',
         direccion: 'cr 18 r',
         telefono: '3124469702',
-        identificacion: 'dsa',
+        identificacion: '1.000.153.783',
       },
     ];
     this.List = data;

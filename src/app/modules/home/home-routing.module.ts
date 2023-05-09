@@ -10,6 +10,9 @@ const routes: Routes = [
    path:'conductors',
    loadChildren : () => import('../drivers/drivers.module').then((m)=>m.DriversModule)
 
+ },{
+  path:'',
+  loadChildren : () => import('../drivers/drivers.module').then((m)=>m.DriversModule)
  }
 ];
 

@@ -1,19 +1,20 @@
 <div class="ui-wrapper">
+  <div class="col-12 butoonp">
+    <button
+      type="button"
+      class="btn btn-outline-info hov"
+      data-bs-toggle="modal"
+      data-bs-target="#Vehiculos"
+    >
+      <i class="bi bi-plus-circle"></i>
+      Crear
+    </button>
+  </div>
   <div class="ui-filter">
     <div class="ui-filter-top">
       <div class="container text-center">
         <div class="row">
           <div class="col-8"><h5>Listado de Vehículos</h5></div>
-          <div class="col-4">
-            <button
-              type="button"
-              class="btn btn-success"
-              data-bs-toggle="modal"
-              data-bs-target="#Vehiculos"
-            >
-              Crear
-            </button>
-          </div>
         </div>
       </div>
     </div>
@@ -23,17 +24,37 @@
   <div class="ui-filter">
     <div class="ui-filter-top">
       <div *ngFor="let list of List">
-        <div class="ui-item">
+        <div class="ui-item w-h">
           <div class="ui-image">
-            <div>
-              <div>
-                <p>Placa:{{list.placa}}</p>
-              </div>
-              <div>
-                <p>Modelo:{{list.modelo}}</p>
-              </div>
-              <div>
-                <p>Capacidad:{{list.capacidad}}</p>
+            <div class="borderI">
+              <img
+                src="../../../../../assets/carro.png"
+                class="imgg"
+                width="100%"
+                height="100%"
+              />
+            </div>
+          </div>
+          <div class="ui-block-text">
+            <div class="ui-more-info">
+              <div class="ui-small-section">
+                <div class="col">
+                  <div class="col-12">
+                    <h5 class="center_T">
+                      {{ list.placa }}
+                    </h5>
+                  </div>
+                  <div class="row pab">
+                    <div class="col-6 felx centerall">
+                      <i class="bi bi-car-front-fill pi fons" ></i>
+                      {{ list.modelo }}
+                    </div>
+                    <div class="col-6 felx centerall">
+                      <i class="bi bi-people pi fons"></i>
+                      {{ list.capacidad }}
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

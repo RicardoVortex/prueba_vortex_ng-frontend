@@ -18,21 +18,21 @@ export class ListComponent implements OnInit {
         const data =[
        {
          id:1,
-         placa:"dasd",
-         modelo:"dasd",
-         capacidad:"dasd",
+         placa:"HGO-154",
+         modelo:"Apache",
+         capacidad:"124",
        },
        {
          id:2,
-         placa:"dasd",
-         modelo:"dasd",
-         capacidad:"dasd",
+         placa:"HGO-154",
+         modelo:"Apache",
+         capacidad:"1",
        },
        {
          id:3,
-         placa:"dasd",
-         modelo:"dasd",
-         capacidad:"dasd",
+         placa:"HGO-154",
+         modelo:"Apache",
+         capacidad:"12",
        },
      ]
      this.List = data;
