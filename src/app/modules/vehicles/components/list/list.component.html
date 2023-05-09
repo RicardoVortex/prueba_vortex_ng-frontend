@@ -1,0 +1,55 @@
+<div class="ui-wrapper">
+  <div class="ui-filter">
+    <div class="ui-filter-top">
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-8"><h5>Listado de Vehículos</h5></div>
+          <div class="col-4">
+            <button
+              type="button"
+              class="btn btn-success"
+              data-bs-toggle="modal"
+              data-bs-target="#Vehiculos"
+            >
+              Crear
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="ui-wrapper">
+  <div class="ui-filter">
+    <div class="ui-filter-top">
+      <div *ngFor="let list of List">
+        <div class="ui-item">
+          <div class="ui-image">
+            <div>
+              <div>
+                <p>Placa:{{list.placa}}</p>
+              </div>
+              <div>
+                <p>Modelo:{{list.modelo}}</p>
+              </div>
+              <div>
+                <p>Capacidad:{{list.capacidad}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  class="modal fade"
+  id="Vehiculos"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="VehiculosLabel"
+  aria-hidden="true"
+>
+  <app-create></app-create>
+</div>
