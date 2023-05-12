@@ -5,41 +5,70 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  styleUrls: ['./list.component.css'],
 })
 export class ListComponent implements OnInit {
-  List:any;
+  List: any;
 
-  constructor(public driversServ:VehicleService) { }
-
+  constructor(public driversServ: VehicleService) {}
 
   ngOnInit(): void {
-    this.consult();
-    //     const data =[
-    //    {
-    //      id:1,
-    //      placa:"HGO-154",
-    //      modelo:"Apache",
-    //      capacidad:"124",
-    //    },
-    //    {
-    //      id:2,
-    //      placa:"HGO-154",
-    //      modelo:"Apache",
-    //      capacidad:"1",
-    //    },
-    //    {
-    //      id:3,
-    //      placa:"HGO-154",
-    //      modelo:"Apache",
-    //      capacidad:"12",
-    //    },
-    //  ]
-    //  this.List = data;
+    //this.consult();
+    const data = [
+      {
+        id: 1,
+        placa: 'HGO-154',
+        modelo: 'Apache',
+        capacidad: '124',
+      },
+      {
+        id: 2,
+        placa: 'HGO-154',
+        modelo: 'Apache',
+        capacidad: '1',
+      },
+      {
+        id: 3,
+        placa: 'HGO-154',
+        modelo: 'Apache',
+        capacidad: '12',
+      },
+      {
+        id: 4,
+        placa: 'HGO-154',
+        modelo: 'Apache',
+        capacidad: '12',
+      },
+      {
+        id: 5,
+        placa: 'HGO-154',
+        modelo: 'Apache',
+        capacidad: '12',
+      },
+      {
+        id: 6,
+        placa: 'HGO-154',
+        modelo: 'Apache',
+        capacidad: '12',
+      },
+      {
+        id: 7,
+        placa: 'HGO-154',
+        modelo: 'Apache',
+        capacidad: '12',
+      },
+      {
+        id: 8,
+        placa: 'HGO-154',
+        modelo: 'Apache',
+        capacidad: '12',
+      },
+    ];
+    this.List = data;
   }
-   consult (){
+  consult() {
     this.driversServ.getAllVehicles().subscribe(
-      response =>{
+      (response) => {
         this.List = response;
       },
       (error) => {
@@ -47,7 +76,7 @@ export class ListComponent implements OnInit {
           icon: 'error',
           title: 'Error',
           text: 'Se presento un error en el servidor',
-          confirmButtonText:'Aceptar',
+          confirmButtonText: 'Aceptar',
         });
       }
     );

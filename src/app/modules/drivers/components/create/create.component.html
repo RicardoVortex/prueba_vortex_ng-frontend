@@ -1,26 +1,41 @@
 <div class="modal-dialog">
   <div class="modal-content">
-    <form [formGroup]="checkoutForm" name="crearEventoForm()" (ngSubmit)="createEvento(checkoutForm.value)">
-    <div class="modal-header colr_mod">
-      <h1 class="modal-title fs-5" id="staticBackdropLabel">Crear Conductor</h1>
-      <button
-        type="button"
-        class="styl_bclo"
-        data-bs-dismiss="modal"
-        aria-label="Close"
-      >
-      <i class="bi bi-x-lg close_color"></i>
-    </button>
-    </div>
-    <div class="modal-body">
+    <form
+      [formGroup]="checkoutForm"
+      name="crearEventoForm()"
+      (ngSubmit)="createEvento(checkoutForm.value)"
+    >
+      <div class="modal-header colr_mod">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">
+          Crear Conductor
+        </h1>
+        <button
+          type="button"
+          class="styl_bclo"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >
+          <i class="bi bi-x-lg close_color"></i>
+        </button>
+      </div>
+      <div class="modal-body">
         <div class="input-group mb-3">
           <span class="input-group-text"> Nombre y Apellido</span>
-          <input type="text" aria-label="First name" class="form-control"
-          formControlName="nombre"
+          <input
+            type="text"
+            aria-label="First name"
+            class="form-control"
+            formControlName="nombre"
             id="nombre"
+            name="firstname"
+            ngModel
+            required
           />
-          <input type="text" aria-label="Last name" class="form-control"
-          formControlName="apellido"
+          <input
+            type="text"
+            aria-label="Last name"
+            class="form-control"
+            formControlName="apellido"
             id="apellido"
           />
         </div>
@@ -48,7 +63,7 @@
             aria-describedby="inputGroup-sizing-default"
             formControlName="telefono"
             id="telefono"
-            />
+          />
         </div>
         <div class="input-group mb-3">
           <span class="input-group-text" id="inputGroup-sizing-default"
@@ -63,16 +78,21 @@
             id="direccion"
           />
         </div>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class=" btn btn-outline-danger" data-bs-dismiss="modal">
-        <i class="bi bi-door-closed hov"></i>
-        Cerrar
-      </button>
-      <button type="button" class="btn btn-outline-success" type="submit">
-        <i class="bi bi-save hov"></i>
-        Crear</button>
-    </div>
-  </form>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-outline-danger"
+          data-bs-dismiss="modal"
+        >
+          <i class="bi bi-door-closed hov"></i>
+          Cerrar
+        </button>
+        <button type="button" class="btn btn-outline-success" type="submit">
+          <i class="bi bi-save hov"></i>
+          Crear
+        </button>
+      </div>
+    </form>
   </div>
 </div>
