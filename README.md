@@ -1,17 +1,10 @@
 
 # Ejecución del proyecto
-
-
 ## 1. instalación de librerías con npm
 
     npm install
-
-
-
 ## 2. Correr el proyecto 
     ng serve
-
-
 # Librerías usadas
 
 - angularcli: es un framework de de javascript para facilitar el proceso de desarrollo en el Front.
