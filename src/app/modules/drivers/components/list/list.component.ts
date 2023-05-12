@@ -10,17 +10,20 @@ import Swal from 'sweetalert2';
 })
 export class ListComponent implements OnInit {
   List: any;
+  dataG:any;
   id_number: number;
   data: any;
+
   constructor(
     public driversServ: DriversService,
-    private servicioData: DataService
+    public servicioData: DataService
   ) {}
 
   ngOnInit(): void {
-    /*this.driversServ.getAllDrivers().subscribe(
+    this.driversServ.getAllDrivers().subscribe(
       (response) => {
-        this.List = response;
+        this.dataG = response;
+        this.servicioData.dataListDri = this.dataG.data;
       },
       (error) => {
         Swal.fire({
@@ -30,88 +33,22 @@ export class ListComponent implements OnInit {
           confirmButtonText:'Aceptar',
         });
       }
-    );*/
-    const data = [
-      {
-        id: 1,
-        nombre: 'Johan ',
-        apellido: 'Romero',
-        direccion: 'cr 18 r',
-        telefono: '3124469702',
-        identificacion: '1.000.153.783',
-      },
-      {
-        id: 2,
-        nombre: 'Romero ',
-        apellido: 'Medina',
-        direccion: 'cr 18 r',
-        telefono: '3124469702',
-        identificacion: '1.000.153.783',
-      },
-      {
-        id: 3,
-        nombre: 'Juan ',
-        apellido: 'Torres',
-        direccion: 'cr 18 r',
-        telefono: '3124469702',
-        identificacion: '1.000.153.783',
-      },
-      {
-        id: 4,
-        nombre: 'Juan ',
-        apellido: 'Torres',
-        direccion: 'cr 18 r',
-        telefono: '3124469702',
-        identificacion: '1.000.153.783',
-      },
-      {
-        id: 5,
-        nombre: 'Juan ',
-        apellido: 'Torres',
-        direccion: 'cr 18 r',
-        telefono: '3124469702',
-        identificacion: '1.000.153.783',
-      },
-      {
-        id: 6,
-        nombre: 'Juan ',
-        apellido: 'Torres',
-        direccion: 'cr 18 r',
-        telefono: '3124469702',
-        identificacion: '1.000.153.783',
-      },
-      {
-        id: 7,
-        nombre: 'Juan ',
-        apellido: 'Torres',
-        direccion: 'cr 18 r',
-        telefono: '3124469702',
-        identificacion: '1.000.153.783',
-      },
-      {
-        id: 8,
-        nombre: 'Juan ',
-        apellido: 'Torres',
-        direccion: 'cr 18 r',
-        telefono: '3124469702',
-        identificacion: '1.000.153.783',
-      },
-    ];
-    this.List = data;
+    );
   }
 
   GetId(id: number) {
+
     this.id_number = id;
-    this.driversServ.getAllDriversDeso(id).subscribe((response) => {
-      this.data = response;
-      this.servicioData.dataList = this.data;
+    this.driversServ.getDriverNotWhiVeh().subscribe((response) => {
+      this.data = response.data;
+      this.servicioData.dataListAso = this.data;
     });
   }
-  GetIdDes(id: number) {
+  GetIdDes(id:number) {
     this.id_number = id;
-    this.driversServ.getAllDriversAso(id).subscribe((response) => {
-      this.data = response;
-      this.servicioData.dataList = this.data;
+    this.driversServ.getDriverWhiVeh(id).subscribe((response) => {
+      this.data = response.data;
+      this.servicioData.dataListDe = this.data;
     });
   }
 }

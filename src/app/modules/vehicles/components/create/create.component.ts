@@ -10,37 +10,26 @@ import { VehicleService } from 'src/app/services/vehicle/vehicle.service';
 })
 export class CreateComponent implements OnInit {
   eventForm: FormGroup;
-  checkoutForm;
+  checkoutForm: FormGroup;
 
-  constructor(public vehucileService: VehicleService,private formBuilder: FormBuilder ) { 
+  constructor(public vehucileService: VehicleService,private formBuilder: FormBuilder ) {
     this.checkoutForm = this.formBuilder.group({
-      placa: '',
-      modelo: '',
-      capacidad:'',
+      placa: ['',Validators.required],
+      modelo:['',Validators.required],
+      capacidad:['',Validators.required],
     });
 
   }
 
   ngOnInit(): void {
-    this.eventForm = this.formBuilder.group({
-      placa: this.formBuilder.control(null, [
-        Validators.required,
-        Validators.maxLength(8),
-      ]),
-      modelo: this.formBuilder.control(null, [
-        Validators.required,
-        Validators.maxLength(50),
-      ]),
-      capacidad: this.formBuilder.control(null, [
-        Validators.required,
-        Validators.maxLength(50),
-      ]),
-   
-    });
-  }
-  createEvento(customerData:VehicleModel){
-    this.vehucileService.createVeh(customerData);
 
   }
+  createEvento(customerData:VehicleModel){
+    if(this.checkoutForm.valid){
+      this.vehucileService.createVeh(customerData);
+    }
+  }
+  get modelo() { return this.checkoutForm.get('modelo'); }
+
 
 }

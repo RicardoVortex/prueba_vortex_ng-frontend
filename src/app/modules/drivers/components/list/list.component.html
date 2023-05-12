@@ -25,7 +25,7 @@
     <div class=" text-center">
       <div class="ui-filter-top">
         <div class="row">
-          <div *ngFor="let list of List" class="col-3 pad">
+          <div *ngFor="let list of this.servicioData.dataListDri" class="col-3 pad">
             <div class="ui-item w-h">
               <div class="ui-image">
                 <div class="borderI">
@@ -124,7 +124,7 @@
   aria-labelledby="Asoci"
   aria-hidden="true"
 >
-  <app-associate></app-associate>
+  <app-associate [id_conductor]="id_number"></app-associate>
 </div>
 <div
   class="modal fade"
@@ -135,5 +135,5 @@
   aria-labelledby="Des"
   aria-hidden="true"
 >
-  <app-disassociate ></app-disassociate>
+  <app-disassociate [id_conductor]="id_number" ></app-disassociate>
 </div>

@@ -5,5 +5,10 @@ import { Injectable } from '@angular/core';
 })
 export class DataService {
   dataList: any[] ;
+  dataListAso:any[];
+  dataListDe:any[];
+  dataListDri:any[];
+  dataListVeh:any[];
+
   constructor() { }
 }

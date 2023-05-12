@@ -1,61 +1,89 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
 import { ConductorsModel } from '../../core/models/conductors.interface';
 import { environment } from 'src/environments/environment';
-import { delay } from 'rxjs/operators';
 import Swal from 'sweetalert2';
+import { ResponseModel } from 'src/app/core/models/response';
+import { DataService } from '../data.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DriversService {
   private vari = environment.baseUrl;
-  private respons = {};
+  data: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private servicioData: DataService) {}
 
-  getAllDrivers() {
-    return this.http.get(`${this.vari}conductor/conductor/`);
-  }
+
   createDrivers(Drivers: ConductorsModel) {
-    // var bootstrap: any;
-    // var myModal = new bootstrap.Modal(document.getElementById('myModal'), {
-    //   keyboard: false,
-    // });
     const headers = { 'content-type': 'application/json' };
     const body = JSON.stringify(Drivers);
     this.http
-      .post(`${this.vari}conductor/conductor/`, body, {
+      .post<ResponseModel>(`${this.vari}conductor/`, body, {
         headers: headers,
         observe: 'response',
       })
       .subscribe(
         (response) => {
-          this.getAllDrivers();
+          this.getAllDrivers2();
+          let mens = response.body?.message
           Swal.fire({
             icon: 'success',
             title: 'Éxito',
-            text: 'Se creo el conductor con éxito',
+            text: `${mens}`,
             confirmButtonText:'Aceptar',
           });
-          //myModal.hide();
         },
         (error) => {
-          Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'Se presento un error en el servidor',
-            confirmButtonText:'Aceptar',
-          });
+          if(error.error.error.identificacion[0]){
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text:`La identificación del conductor ya se encuentra registrada`,
+              confirmButtonText: 'Aceptar',
+            });
+          }else{
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: 'Se presento un error en el servidor',
+              confirmButtonText:'Aceptar',
+            });
+          }
         }
       );
   }
-  uptDriversAso(Drivers: any, id: number) {
+  getAllDrivers() {
+    return this.http.get(`${this.vari}conductor/lista/`);
+  }
+  getDriverWhiVeh(id:number){
+    return this.http.get<ResponseModel>(`${this.vari}vehiculo/lista/con-conductor/${id}`);
+  }
+  getDriverNotWhiVeh(){
+    return this.http.get<ResponseModel>(`${this.vari}vehiculo/lista/sin-conductor/`);
+  }
+  getAllDrivers2() {
+     this.http.get<ResponseModel>(`${this.vari}conductor/lista/`).subscribe(
+      (response) =>{
+      this.data = response.data;
+      this.servicioData.dataListDri = this.data;
+      }
+     )
+  }
+  getDriverWhiVeh2(id:number){
+    return this.http.get<ResponseModel>(`${this.vari}vehiculo/lista/con-conductor/${id}`);
+  }
+  getDriverNotWhiVeh2(){
+    return this.http.get<ResponseModel>(`${this.vari}vehiculo/lista/sin-conductor/`);
+  }
+  uptDriversAso(id_conductor: number, id: number) {
     const headers = { 'content-type': 'application/json' };
-    const body = JSON.stringify(Drivers);
+    const body = {
+        conductor_id: id_conductor
+    };
     this.http
-      .put(`${this.vari}conductor/vehiculos_no_asignados/${id}/`, body, {
+      .put(`${this.vari}vehiculo/${id}/asociar/conductor/`, body, {
         headers: headers,
         observe: 'response',
       })
@@ -67,8 +95,7 @@ export class DriversService {
             text: 'Se asigno el conductor  al vehículo',
             confirmButtonText:'Aceptar',
           });
-          this.getAllDrivers();
-          console.log('creado con extio' + response);
+
         },
         (error) => {
           Swal.fire({
@@ -77,15 +104,16 @@ export class DriversService {
             text: 'Se presento un error en el servidor',
             confirmButtonText:'Aceptar',
           });
-          console.log('Post failed with the errors');
         },
       );
   }
-  uptDriversDesAso(Drivers: any, id: number) {
+  uptDriversDes(id: number) {
     const headers = { 'content-type': 'application/json' };
-    const body = JSON.stringify(Drivers);
+    const body = {
+        conductor_id: null
+    };
     this.http
-      .put(`${this.vari}conductor/vehiculos_asignados/${id}/`, body, {
+      .put(`${this.vari}vehiculo/${id}/asociar/conductor/`, body, {
         headers: headers,
         observe: 'response',
       })
@@ -94,11 +122,10 @@ export class DriversService {
           Swal.fire({
             icon: 'success',
             title: 'Éxito',
-            text: 'Se asigno el conductor  al vehículo',
+            text: 'Se desasocio el conductor delvehículo',
             confirmButtonText:'Aceptar',
           });
-          this.getAllDrivers();
-          console.log('creado con extio' + response);
+
         },
         (error) => {
           Swal.fire({
@@ -107,15 +134,8 @@ export class DriversService {
             text: 'Se presento un error en el servidor',
             confirmButtonText:'Aceptar',
           });
-          console.log('Post failed with the errors');
         },
       );
   }
 
-  getAllDriversAso(id: number) {
-    return this.http.get(`${this.vari}conductor/vehiculos_asignados/${id}/`);
-  }
-  getAllDriversDeso(id: number) {
-    return this.http.get(`${this.vari}conductor/vehiculos_no_asignados/${id}/`);
-  }
 }

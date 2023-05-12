@@ -15,7 +15,7 @@
     <div class="modal-body">
         <div class="input-group mb-3">
           <span class="input-group-text" id="inputGroup-sizing-default"
-            >Placa</span
+            >Placa *</span
           >
           <input
             type="text"
@@ -28,7 +28,7 @@
         </div>
         <div class="input-group mb-3">
           <span class="input-group-text" id="inputGroup-sizing-default"
-            >Modelo</span
+            >Modelo *</span
           >
           <input
             type="text"
@@ -37,11 +37,22 @@
             aria-describedby="inputGroup-sizing-default"
             formControlName="modelo"
             id="modelo"
+            name="modelo"
+            required
           />
+          <div
+          *ngIf="modelo?.invalid && (modelo?.dirty || modelo?.touched)"
+          class="alert alert-danger"
+          >
+          <div *ngIf="modelo?.errors?.['required']">
+            Name is required.
+          </div>
+        </div>
+
         </div>
         <div class="input-group mb-3">
           <span class="input-group-text" id="inputGroup-sizing-default"
-            >Capacidad</span
+            >Capacidad *</span
           >
           <input
             type="text"
@@ -50,6 +61,7 @@
             aria-describedby="inputGroup-sizing-default"
             formControlName="capacidad"
             id="capacidad"
+            name="capacidad"
           />
         </div>
     </div>

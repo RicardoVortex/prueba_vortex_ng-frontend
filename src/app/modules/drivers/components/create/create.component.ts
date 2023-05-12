@@ -19,7 +19,7 @@ export class CreateComponent implements OnInit {
       apellido: '',
       telefono: '',
       direccion: '',
-      identicacion: '',
+      identificacion: '',
     });
   }
 
@@ -41,11 +41,11 @@ export class CreateComponent implements OnInit {
         Validators.required,
         Validators.maxLength(10),
       ]),
-      identicacion: this.formBuilder.control(null, [
+      identificacion: this.formBuilder.control(null, [
         Validators.required,
         Validators.maxLength(10),
       ]),
-   
+
     });
 
   }

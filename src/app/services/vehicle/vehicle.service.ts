@@ -5,6 +5,7 @@ import { ConductorsModel } from '../../core/models/conductors.interface';
 import { environment } from 'src/environments/environment';
 import { VehicleModel } from 'src/app/core/models/vehicle.interface';
 import Swal from 'sweetalert2';
+import { ResponseModel } from 'src/app/core/models/response';
 
 @Injectable({
   providedIn: 'root',
@@ -15,35 +16,44 @@ export class VehicleService {
   constructor(private http: HttpClient) {}
 
   getAllVehicles() {
-    return this.http.get(`${this.vari}vehiculo/vehiculo/`);
+    return this.http.get(`${this.vari}vehiculo/lista/`);
   }
   createVeh(Veh: VehicleModel) {
     const headers = { 'content-type': 'application/json' };
-    const body = JSON.stringify(Veh);
+    const bodys = JSON.stringify(Veh);
     this.http
-      .post(`${this.vari}vehiculo/vehiculo/`, body, {
+      .post<ResponseModel>(`${this.vari}vehiculo/`, bodys, {
         headers: headers,
         observe: 'response',
       })
       .subscribe(
         (response) => {
+          let mens = response.body?.message
           Swal.fire({
             icon: 'success',
             title: 'Éxito',
-            text: 'Se creo el vehículo con éxito',
+            text: `${mens}`,
             confirmButtonText: 'Aceptar',
           });
           this.getAllVehicles()
-          console.log('creado con extio' + response);
         },
         (error) => {
-          Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'Se presento un error en el servidor',
-            confirmButtonText: 'Aceptar',
-          });
-          console.log('Post failed with the errors');
+          if(error.error.error.placa[0]){
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text:`La placa del vehículo ya se encuentra registrada`,
+              confirmButtonText: 'Aceptar',
+            });
+          }else{
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: 'Se presento un error en el servidor',
+              confirmButtonText:'Aceptar',
+            });
+          }
+
         }
       );
   }

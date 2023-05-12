@@ -1,27 +1,51 @@
-# SistemaDeTransporteFront
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.0.
+# Ejecución del proyecto
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## 1. instalación de librerías con npm
 
-## Code scaffolding
+    npm install
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 2. Correr el proyecto 
+    ng serve
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+# Librerías usadas
 
-## Running end-to-end tests
+- angularcli: es un framework de de javascript para facilitar el proceso de desarrollo en el Front.
+- bootstrap:es un framework front-end utilizado para desarrollar aplicaciones web y sitios mobile first .
+- bootstrap-icons: es una extención de bootstrap para poner reconocer los iconos de bootstrap
+- sweetalert2: se utiliza para crear mensajes de alerta.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### versiones
+   - "@angular/animations": "~12.2.0",
+   -  "@angular/common": "~12.2.0",
+   -  "@angular/compiler": "~12.2.0",
+   -  "@angular/core": "~12.2.0",
+   -  "@angular/forms": "~12.2.0",
+   -  "@angular/http": "^7.2.16",
+   -  "@angular/platform-browser": "~12.2.0",
+   - "@angular/platform-browser-dynamic": "~12.2.0",
+   - "@angular/router": "~12.2.0",
+   - "@popperjs/core": "^2.11.7",
+   - "axios": "^1.3.5",
+   - "bootstrap": "^5.2.3",
+   - "bootstrap-icons": "^1.10.5",
+   - "jquery": "^3.6.4",
+   - "rxjs": "~6.6.0",
+   - "sweetalert2": "^11.7.5",
+   - "tslib": "^2.3.0",
+    -"zone.js": "~0.11.4"
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+# Proceso de desarrollo 
+- Se realizo el proyecto con Angular 12 es una plataforma de desarrollo, construida sobre TypeScript, usando los componentes que se peuden manejar en Angular para realizar un código más limpio y manejable para los demás componentes, tambien se uso bootstrap para la parte de diseño el cual nos facilita usar sus componentes para la maquetación en HTML.
+
+## Requerimientos dados por el cliente
+- Registrar los vehículos que se tienen disponibles para realizar los pedidos.
+- Registrar los conductores que estan contratados por la empresa.
+- Asociar un conductor a uno o varios vehículos. En este punto se espera que al tener un conductor seleccionado solo cargue los vehículos que NO tiene asignados para realizar la asignación.
+- Desasociar un conductor de un vehículo. En este punto se espera que al tener un conductor seleccionado solo cargue los vehículos que YA han sido asignados previamente para quitar la asociación.
+
